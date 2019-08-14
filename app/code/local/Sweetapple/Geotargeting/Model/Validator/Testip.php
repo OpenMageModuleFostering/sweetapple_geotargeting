@@ -1,6 +1,6 @@
 <?php
 /**
- * Sweetapple_Geotargeting_Model_Testip
+ * Sweetapple_Geotargeting_Model_Validator_Testip
  *
  * This module was developed by Sweet-Apple.  If you require any
  * support or have any questions please contact us at info@sweet-apple.co.uk.
@@ -12,7 +12,7 @@
  * @license    OSL v3.0
 */
 
-class Sweetapple_Geotargeting_Model_Testip extends Mage_Core_Model_Config_Data {
+class Sweetapple_Geotargeting_Model_Validator_Testip extends Mage_Core_Model_Config_Data {
 
 
     /**
@@ -26,17 +26,18 @@ class Sweetapple_Geotargeting_Model_Testip extends Mage_Core_Model_Config_Data {
             if( (strlen($newIP) == 0 )  || $validateIp->isValid( $newIP) ){
                 return parent::save();  //call original save method to save value
             }else{
-                Mage::getSingleton('adminhtml/session')->addError('Please enter a valid IP address for the Download URL.');
+                Mage::getSingleton('adminhtml/session')->addError('Please enter a valid IP address for the Test IP Address field.');
             }
         }
 
 
     /**
-     * After downloadurl is changed in System->Config clear the value stored in the session
+     * After Test IP Address is changed in System->Config clear the value stored in the session
      * @return Mage_Core_Model_Abstract|void
      */
     protected function _afterSave()
     {
+
         Mage::getSingleton('core/session')->setData('sweetapple_geoip_country');
     }
 

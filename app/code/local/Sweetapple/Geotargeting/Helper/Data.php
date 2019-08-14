@@ -48,7 +48,9 @@ class Sweetapple_Geotargeting_Helper_Data extends Mage_Core_Helper_Abstract {
         $ip = $this->_getIPToTest( $ip );
 
         // Update the DB if necessary...
-        $this->_updateDatabase();
+        if($this->_checkDatabaseNeedsUpdate()) {
+            $this->_updateDatabase();
+        }
 
         //Get the country code...
         require_once( $this->_modulePath . "/GeoIP/geoip.class.php" );
@@ -69,7 +71,7 @@ class Sweetapple_Geotargeting_Helper_Data extends Mage_Core_Helper_Abstract {
 
 
     /**
-     * Returns the IP to test, using first specfic IP, then value from Module settings, finally $_SERVER['REMOTE_ADDR']
+     * Returns the IP to test, using first specific IP, then value from Module settings, finally $_SERVER['REMOTE_ADDR']
      * @param string $ip
      * @return string
      */
@@ -87,7 +89,7 @@ class Sweetapple_Geotargeting_Helper_Data extends Mage_Core_Helper_Abstract {
      * Checks if the cached database needs updating. Updates are released on the first Tuesday of the month...
      * @return bool
      */
-    private function _databaseNeedsUpdate()
+    private function _checkDatabaseNeedsUpdate()
     {
 
         if( file_exists( $this->_databasePath ) ){
@@ -114,21 +116,23 @@ class Sweetapple_Geotargeting_Helper_Data extends Mage_Core_Helper_Abstract {
      */
     private function _updateDatabase()
     {
-        if( $this->_databaseNeedsUpdate() ){
+        $store = Mage::app()->getStore();
+        $updateUrl = $store->getConfig( self::XML_PATH_GEOIP_UPDATE_PATH );
 
-            $store = Mage::app()->getStore();
-            $updateUrl = $store->getConfig( self::XML_PATH_GEOIP_UPDATE_PATH );
+        $client = new Zend_Http_Client($updateUrl);
+        $response = $client->request(Zend_Http_Client::GET);
+        // getBody() automatically decodes the body! Nice one Zend!
+        $gzBody = $response->getBody();
+        $body = $this->_gzdecode( $gzBody );
 
-            $client = new Zend_Http_Client($updateUrl);
-            $response = $client->request(Zend_Http_Client::GET);
-            // getBody() automatically decodes the body! Nice one Zend!
-            $gzBody = $response->getBody();
-            $body = $this->_gzdecode( $gzBody );
+        return ( file_put_contents( $this->_databasePath, $body ) !== false) ? true : false ;
+    }
 
-            return ( file_put_contents( $this->_databasePath, $body ) !== false) ? true : false ;
-        }
 
-        return true;
+
+    public function updateDatabase()
+    {
+        $this->_updateDatabase();
     }
 
 

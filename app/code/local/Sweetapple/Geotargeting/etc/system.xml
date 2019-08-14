@@ -52,16 +52,17 @@
                     <show_in_default>1</show_in_default>
                     <fields>
                         <download_url translate="label">
+                            <backend_model>sweetapple_geotargeting/validator_updateurl</backend_model>
                             <label>Database Update URL</label>
-                            <comment><![CDATA[ Enter the URL to the <strong>GeoLite Country</strong> in <strong>Binary/GZIP</strong> format. This URL should very infrequently change, but you can find the most update to date link on this <a href="http://dev.maxmind.com/geoip/legacy/geolite" target="_blank">page</a><br /><br /> The module automatically updates the database on the first Wednesday of every month..]]></comment>
+                            <comment><![CDATA[ Enter the URL to the <strong>GeoLite Country</strong> in <strong>Binary/GZIP</strong> format. This URL should very infrequently change, but you can find the most update to date link on this <a href="http://dev.maxmind.com/geoip/legacy/geolite" target="_blank">page</a><br /><br /> The module automatically updates the database on changing this value and on the first Wednesday of every month.]]></comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
                         </download_url>
                         <test_ip translate="label">
-                            <backend_model>sweetapple_geotargeting/testip</backend_model>
+                            <backend_model>sweetapple_geotargeting/validator_testip</backend_model>
                             <label>Test IP Address</label>
-                            <comment><![CDATA[ Enter an IP Address you wish to use to test the GeoIP functionality. You can find suitable IP address <a href="http://www.nirsoft.net/countryip/" target="_blank">here</a> Please remember to delete this after testing, otherwise all requests on the site will be tested against this value.<br /><br />More robust testing can be done through using a <strong>Web Proxy</strong> to simulate traffic from another physical location. ..]]></comment>
+                            <comment><![CDATA[ Enter an IP Address you wish to use to test the GeoIP functionality. You can find suitable IP address <a href="http://www.nirsoft.net/countryip/" target="_blank">here</a> Please remember to delete this after testing, otherwise all requests on the site will be tested against this value.<br /><br />More robust testing can be done through using a <strong>Web Proxy</strong> to simulate traffic from another physical location.]]></comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
