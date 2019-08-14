@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Sweetapple_Geotargeting>
-            <version>0.1.2</version>
+            <version>0.1.4</version>
         </Sweetapple_Geotargeting>
     </modules>
     <default>

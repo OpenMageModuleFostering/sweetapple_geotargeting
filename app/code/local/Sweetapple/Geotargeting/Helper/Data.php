@@ -81,7 +81,7 @@ class Sweetapple_Geotargeting_Helper_Data extends Mage_Core_Helper_Abstract {
             $ip = Mage::getStoreConfig( self::XML_PATH_GEOIP_TEST_IP );
         }
         $validateIp = new Zend_Validate_Ip();
-        return ( $validateIp->isValid( $ip) ) ? $ip : $_SERVER['REMOTE_ADDR'];
+        return ( $validateIp->isValid( $ip) ) ? $ip : Mage::helper('core/http')->getRemoteAddr();
     }
 
 
