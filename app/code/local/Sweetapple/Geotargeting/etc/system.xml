@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Sweetapple_Geotargeting
+*
+* This module was developed by Sweet-Apple.  If you require any
+* support or have any questions please contact us at info@sweet-apple.co.uk.
+*
+* @category   Sweetapple
+* @package    Sweetapple_Geotargeting
+* @author     Clive Sweeting, Sweet-Apple <info@sweet-apple.co.uk>
+* @copyright  Copyright (c) 2013 Sweet-Apple (http://www.sweet-apple.co.uk)
+* @license    OSL v3.0
+*/
+-->
+<config>
+    <tabs>
+        <sweetapple translate="label" module="sweetapple_geotargeting">
+            <label>Sweetapple</label>
+            <sort_order>500</sort_order>
+        </sweetapple>
+    </tabs>
+    <sections>
+        <sweetapple_geotargeting translate="label" module="sweetapple_geotargeting">
+            <label>Geotargeting</label>
+            <tab>sweetapple</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>520</sort_order>
+            <show_in_default>1</show_in_default>
+            <groups>
+                <module translate="label">
+                    <label>Geotargeting Options</label>
+                    <comment>
+                        <![CDATA[
+                        <div style="padding:10px;background-color:#fff;border:1px solid #ddd;margin-bottom:7px;">
+                        The <a href="http://www.sweet-apple.co.uk/magento-ecommerce/" target="_blank">Sweet-Apple</a> Geotargeting Extension enables you to make a simple query to determine the country a visitor to your web site is browsing from. You can then show them different content, according to the country reported, with a few lines of simple template logic.<br /><br />
+                        This product includes GeoLite data created by MaxMind, available from <a href="http://www.maxmind.com" target="_blank">http://www.maxmind.com</a><br /><br/>
+                        The database should  <strong>automatically update itself on the first Wednesday of every month</strong>. However you can manually update the GeoIP database by overwriting the file at <em>/app/code/local/Sweetapple/Geotargeting/GeoIP/GeoIP.dat</em><br /><br />
+                        Basic example code to use in your .phtml template files:<br /><br/>
+                        <code>$_ipHelper = $this->helper('sweetapple_geotargeting/data'); /* @var $_ipHelper Sweetapple_Geotargeting_Helper_Data */<br />
+                        $countryCodeFromIP = $_ipHelper->getCountryCodeFromIPAddress();<br />
+                        if( $countryCodeFromIP == "GB" ) {<br />
+                            //do something here, like load a specific static block...<br />
+                            echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_page_message_GB')->toHtml();<br />
+                        }<br />
+                        </code>
+                        </div>
+                      ]]>
+                    </comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <download_url translate="label">
+                            <label>Database Update URL</label>
+                            <comment><![CDATA[ Enter the URL to the <strong>GeoLite Country</strong> in <strong>Binary/GZIP</strong> format. This URL should very infrequently change, but you can find the most update to date link on this <a href="http://dev.maxmind.com/geoip/legacy/geolite" target="_blank">page</a><br /><br /> The module automatically updates the database on the first Wednesday of every month..]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </download_url>
+                        <test_ip translate="label">
+                            <backend_model>sweetapple_geotargeting/testip</backend_model>
+                            <label>Test IP Address</label>
+                            <comment><![CDATA[ Enter an IP Address you wish to use to test the GeoIP functionality. You can find suitable IP address <a href="http://www.nirsoft.net/countryip/" target="_blank">here</a> Please remember to delete this after testing, otherwise all requests on the site will be tested against this value.<br /><br />More robust testing can be done through using a <strong>Web Proxy</strong> to simulate traffic from another physical location. ..]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_ip>
+                    </fields>
+                </module>
+            </groups>
+        </sweetapple_geotargeting>
+    </sections>
+</config>

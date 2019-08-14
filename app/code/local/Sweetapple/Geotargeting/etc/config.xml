@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Sweetapple_Geotargeting>
+            <version>0.1.2</version>
+        </Sweetapple_Geotargeting>
+    </modules>
+    <default>
+        <sweetapple_geotargeting>
+            <module>
+                <download_url>http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz</download_url>
+            </module>
+        </sweetapple_geotargeting>
+    </default>
+    <global>
+        <models>
+            <sweetapple_geotargeting>
+                <class>Sweetapple_Geotargeting_Model</class>
+            </sweetapple_geotargeting>
+        </models>
+        <blocks>
+            <sweetapple_geotargeting>
+                <class>Sweetapple_Geotargeting_Block</class>
+            </sweetapple_geotargeting>
+        </blocks>
+        <helpers>
+            <sweetapple_geotargeting>
+                <class>Sweetapple_Geotargeting_Helper</class>
+            </sweetapple_geotargeting>
+        </helpers>
+    </global>
+
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <sweetapple_geotargeting>
+                                            <title>Sweetapple Geotargeting Options</title>
+                                        </sweetapple_geotargeting>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

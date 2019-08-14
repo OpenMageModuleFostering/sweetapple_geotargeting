@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package>
+    <name>Sweetapple_Geotargeting</name>
+    <version>0.1.2</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/OSL-3.0">OSL v3.0 </license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Enables store administrators, designers and developers to write easy template logic to detect the country a visitor to their store is located in, and display different, country specific content.</summary>
+    <description>You can make a simple query to determine the country a visitor to your web site is browsing from. You can then show them different content, according to the country reported, with a few lines of simple template logic.&#xD;
+&#xD;
+This product includes GeoLite data created by MaxMind, available from http://www.maxmind.com&#xD;
+&#xD;
+&#xD;
+Basic example code to use in your .phtml template files:&#xD;
+&#xD;
+$_ipHelper = $this-&gt;helper('sweetapple_geotargeting/data'); /* @var $_ipHelper Sweetapple_Geotargeting_Helper_Data */&#xD;
+$countryCodeFromIP = $_ipHelper-&gt;getCountryCodeFromIPAddress();&#xD;
+if( $countryCodeFromIP == "GB" ) {&#xD;
+//do something here, like load a specific static block...&#xD;
+echo $this-&gt;getLayout()-&gt;createBlock('cms/block')-&gt;setBlockId('home_page_message_GB')-&gt;toHtml();&#xD;
+}&#xD;
+</description>
+    <notes>Compatible with Magento Community Edition 1.7.0, 1.7.1 and 1.7.2.</notes>
+    <authors><author><name>Sweet-Apple</name><user>Sweet-Apple</user><email>info@sweet-apple.co.uk</email></author></authors>
+    <date>2013-06-08</date>
+    <time>06:15:50</time>
+    <contents><target name="magelocal"><dir name="Sweetapple"><dir name="Geotargeting"><dir name="Block"><file name="Geotargeting.php" hash="e01db5ffd2619aea9ef77c56b57f108e"/></dir><dir name="GeoIP"><file name="GeoIP.dat" hash="acc4ad4f2f6078669cd0a7b44ba5a779"/><file name="geoip.class.php" hash="7d979a4e5e469cdc93033f53d31f4a3f"/><file name=".DS_Store" hash="194577a7e20bdcc7afbb718f502c134c"/></dir><dir name="Helper"><file name="Data.php" hash="dbed97adf319044aee2fb80f983c9a75"/></dir><dir name="Model"><file name="Testip.php" hash="63dfecfe786799296619e57a232f8f9a"/></dir><dir name="etc"><file name="config.xml" hash="3a10bf4280a5a24429b3fefb7603adc1"/><file name="system.xml" hash="b90472aa6888bb44ecc010b80e921b3f"/></dir><file name=".DS_Store" hash="194577a7e20bdcc7afbb718f502c134c"/></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Sweetapple_Geotargeting.xml" hash="fa46b233d4234ecb58ce1a8ea97aeeaf"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.3.0</min><max>6.0.0</max></php></required></dependencies>
+</package>
