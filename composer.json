@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/Sweetapple_Geotargeting",
+    "name": "OpenMageModuleFostering\/Sweetapple_Geotargeting",
     "type": "magento-module",
     "license": "OSL-v3.0-",
     "homepage": "",
     "description": "Enables store administrators, designers and developers to write easy template logic to detect the country a visitor to their store is located in, and display different, country specific content.",
     "authors": [
-    {
-        "name": "Sweet-Apple",
-        "email": "info@sweet-apple.co.uk"
-    }
-],
+        {
+            "name": "Sweet-Apple",
+            "email": "info@sweet-apple.co.uk"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
